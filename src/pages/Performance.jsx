@@ -1,6 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, defaults, plugins } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import DisplaySideBar from "../features/RightSideBar/DisplaySideBar";
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
 
@@ -56,21 +57,24 @@ export default function Performance() {
       },
     },
     plugins: {
-      title: {
+      title: { 
         text: "Product Deliveries",
       },
     },
   };
   return (
-    <div className="grid gap-[1rem] mt-[10rem] overflow-y-auto max-h-[80vh] justify-center py-[3rem] px-[1rem] font-inter">
-      <div className="w-[45rem] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-        <h1 className="font-[600] text-[1.5rem]">Performance Report</h1>
+    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.2rem] font-inter">
+      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-[5000]">
+      <DisplaySideBar/>
       </div>
-      <div className="grid w-[45rem] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
+      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+        <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Performance Report</h1>
+      </div>
+      <div className="grid w-[45rem] lg:w-[40rem] sm:w-[83vw] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
         <Line data={chartData} options={option}/>
       </div>
-      <div className="w-[45rem] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-        <h1 className="font-[600] text-[1.5rem]">Report History</h1>
+      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+        <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Report History</h1>
       </div>
       <div>
         <div className="grid justify-center gap-[1rem]">
@@ -78,7 +82,7 @@ export default function Performance() {
             return (
               <div
                 key={index}
-                className="bg-primaryTwo w-[40rem] grid gap-[1rem] px-[2rem] py-[1rem] rounded-[5px]"
+                className="bg-primaryTwo w-[40rem] lg:w-[37rem] sm:w-[83vw] grid gap-[1rem] px-[2rem] py-[1rem] rounded-[5px]"
               >
                 <h1>{data.text}</h1>
               </div>

@@ -26,7 +26,7 @@ export default {
 
       sm: { max: "500px" },
       // => @media (max-width: 639px) { ... }
-      tn: { max: "370px" },
+      tn: { max: "380px" },
       // => @media (max-width: 400px) { ... }
     },
 

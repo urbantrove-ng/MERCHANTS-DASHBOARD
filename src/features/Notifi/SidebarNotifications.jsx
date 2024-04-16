@@ -18,7 +18,7 @@ export default function SidebarNotifications() {
           .join("");
 
         return (
-          <div key={index} className="flex gap-[2rem] items-center px-[1rem] bg-[#e3e5da] mb-[1rem] py-[0.2rem] rounded-[5px]">
+          <div key={index} className="flex gap-[2rem] sm:gap-[1rem] items-center px-[1rem] bg-[#e3e5da] mb-[1rem] sm:mb-[0.5rem] py-[0.2rem] rounded-[5px]">
             <div className="w-[2.5rem] h-[2.5rem] rounded-[50px] relative bg-primaryOne">
               <h1 className="font-[600] text-white text-[1.2rem] top-1/2 left-1/2 mt-[15%] ml-[0.40rem]">{initials}</h1>
             </div>
