@@ -38,7 +38,7 @@ export default function DashBoard() {
   const navigate = useNavigate();
   return (
     <div className="relative grid gap-[2rem] sm:gap-0 mt-[11rem] sm:mt-[9rem] overflow-y-auto max-h-[80vh] lg:max-h-[100vh] justify-center py-[3rem] px-[3rem] lg:px-[1rem] sm:px-[0.4rem] font-inter">
-      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-[5000]">
+      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
       <Welcome />

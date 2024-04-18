@@ -11,7 +11,7 @@ export default function PremiumService() {
   };
   return (
     <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.1rem] font-inter">
-      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-[5000]">
+      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
         <DisplaySideBar />
       </div>
       <div className="w-[45rem] lg:w-[40rem] sm:w-[87vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
@@ -21,7 +21,7 @@ export default function PremiumService() {
         <h1 className="text-[1.2rem] mb-[1rem] ">Billing Plan</h1>
         <div className="px-[1rem] sm:px-0 flex gap-[2rem] sm:gap-[0.5rem]">
           <div
-            className="border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[39vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer"
+            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[39vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${selectedContent === 'Basic' ? 'bg-primaryTwo' : 'bg-[#fbf7f4]'}`}
             onClick={() => handleContentClick("Basic")}
           >
             <img src={greenegg} alt="" className="m-auto" />
@@ -34,7 +34,7 @@ export default function PremiumService() {
             </h1>
             <ul className="text-left ml-[1.8rem] sm:ml-[0.5rem] sm:text-[0.8rem]">
               <li className="flex items-center gap-[0.5rem] sm:gap-[0.4rem]">
-                <span className="w-[0.7rem] h-[0.7rem] bg-primaryTwo rounded-[10rem]"></span>
+                <span className={`w-[0.7rem] h-[0.7rem] bg-primaryTwo   rounded-[10rem]`}></span>
                 Maximum of 5 ads
               </li>
               <li className="flex items-center sm:items-start gap-[0.5rem] sm:gap-[0.3rem]">
@@ -44,7 +44,7 @@ export default function PremiumService() {
             </ul>
           </div>
           <div
-            className="border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[43vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer"
+            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[43vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${selectedContent === 'Premium' ? 'bg-primaryTwo' : 'bg-[#fbf7f4]'}`}
             onClick={() => handleContentClick("Premium")}
           >
             <img src={purpleegg} alt="" className="m-auto" />

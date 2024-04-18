@@ -32,7 +32,7 @@ const dataText = [
 export default function Faq() {
   return (
     <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.2rem] font-inter">
-      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-[5000]">
+      <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
       <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[2rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">

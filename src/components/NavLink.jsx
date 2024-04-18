@@ -18,5 +18,5 @@ export const navLinks = [
   { name: "Wallet", icon: <FaWallet />, path: "/wallet", subName:"Wallet Dashboard"},
   // { name: "Bid", icon: <FaHandshakeAngle />, path: "/bid", subName:"task Management Dashboard"},
   { name: "FAQ", icon: <FaRegQuestionCircle />, path: "/faq", subName:"FAQ Dashboard"},
-  { name: "Premium Service", icon: <IoDiamondOutline />, path: "/premium", subName:"Premium Service"},
+  { name: "Premium", icon: <IoDiamondOutline />, path: "/premium", subName:"Premium Service"},
 ];

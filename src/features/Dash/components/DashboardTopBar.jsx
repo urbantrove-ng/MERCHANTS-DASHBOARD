@@ -8,7 +8,7 @@ export default function DashboardTopBar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
+    setDropdownOpen(!isDropdownOpen); 
   };
 
   const location = useLocation();
@@ -19,7 +19,7 @@ export default function DashboardTopBar() {
       <div className="flex flex-col h-20 font-[600] justify-center lg:ml-[-6rem] sm:ml-[-10rem]">
         <span className="sm:hidden">{currentMenuItem.name}</span>
         <p
-          className="relative text-[#8C8C8C] font-normal text-[1rem] sm:text-[0.8rem] sm:ml-[1.5rem]"
+          className="relative text-[#8C8C8C] font-normal text-[1rem] sm:font-[500] sm:text-[0.9rem] sm:ml-[23vw]"
         >
           Hi, welcome to {currentMenuItem.subName}
         </p>

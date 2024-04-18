@@ -27,14 +27,14 @@ export default function ProjectRoutes() {
             <SideNavBar />
           </div>
           <div className="flex-grow">
-            <div className="fixed w-full z-20">
+            <div className="fixed w-full z-30">
               <Header />
             </div>
-            <div className="fixed w-full left-[18rem] lg:left-[5rem] sm:left-[3rem] top-[2px] z-20">
+            <div className="fixed w-full left-[18rem] lg:left-[5rem] sm:left-[2.5rem] top-[2px] z-20">
               <DashboardTopBar />
             </div>
             <div className="flex items-center ml-[18rem] lg:ml-[5rem] sm:ml-[3rem]">
-              <div className="flex-none w-[65%] lg:w-[99.8%] z-10">
+              <div className="flex-none w-[65%] lg:w-[99.8%] ">
                 <Routes>
                   <Route path="/" element={<Dash />} />
                   <Route path="/settings" element={<Settings />} />

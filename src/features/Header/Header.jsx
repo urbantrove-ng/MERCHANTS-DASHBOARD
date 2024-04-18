@@ -16,6 +16,7 @@ export default function Header() {
 
   function toNotifs(){
     navigate("/notifications")
+    console.log('clicked');
   }
 
   return (
@@ -27,7 +28,7 @@ export default function Header() {
               type="search"
               name="search"
               placeholder="Search Here"
-              className="bg-[#e3e5da] h-10 sm:h-[2.5rem] px-5 w-[30rem] sm:w-[82vw] sm:ml-[1rem] rounded-[5px] sm:rounded-[10px] focus:outline-none focus:w-[35rem] sm:mb-[-13rem] placeholder:text-primaryOne placeholder:uppercase sm:placeholder:text-[0.9rem]"
+              className="bg-[#e3e5da] h-10 sm:h-[2.5rem] px-5 w-[30rem] sm:w-[82vw] sm:ml-[1rem] rounded-[5px] sm:rounded-[10px] focus:outline-none focus:w-[35rem] sm:focus:w-[82vw] sm:mb-[-13rem] placeholder:text-primaryOne placeholder:uppercase sm:placeholder:text-[0.9rem]"
             />
             <button
               type="submit"
@@ -44,7 +45,7 @@ export default function Header() {
               {currentMenuItem.icon}
             </span>
             <span className="2xl:hidden sm:block font-[600] sm:text-[1.1rem]">
-              {currentMenuItem.name}
+              {currentMenuItem.name} 
             </span>
           </div>
           <div className="flex items-center gap-[2rem] sm:gap-[0.8rem]" onClick={toNotifs}>

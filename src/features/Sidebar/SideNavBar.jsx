@@ -7,6 +7,7 @@ import { navLinks } from "../../components/NavLink";
 import { IoSettingsSharp, IoDiamondOutline, IoLogOutOutline } from "react-icons/io5";
 
 
+
 export default function SideNavBar() { 
 
   return (
@@ -14,7 +15,7 @@ export default function SideNavBar() {
       <div className="px-[1rem] lg:px-0 flex flex-col gap-[0.5rem] border-r-[#DFDBD8] border-[1px] relative bg-[#FBF7F4] lg:w-[5rem] sm:w-[2.9rem]">
         <div className="flex mt-[1rem] ml-[-2rem] justify-center items-center">
           <div className="w-[5rem] h-[5rem] lg:ml-[1.1rem] sm:mr-[-0.5rem]">
-            <img src={logo} alt="logo" className="w-full h-full"/>
+            <img src={logo} alt="logo" className="w-full h-full"/> 
           </div>
           <span className="text-[1.4rem] font-[600] lg:hidden">Urban Trove</span>
         </div>
