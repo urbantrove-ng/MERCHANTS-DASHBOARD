@@ -20,7 +20,7 @@ export default function Header() {
   }
 
   return (
-    <div className="ml-[18rem] lg:ml-[5rem] sm:ml-[1.5rem]">
+    <div className="ml-[20vw] lg:ml-[5rem] sm:ml-[1.5rem]">
       <nav className="bg-white py-[1.5rem] sm:py-[1rem] px-[2rem] flex sm:flex-col-reverse justify-between w-[100%] items-center">
         <div className="flex items-center">
           <div className="relative text-black">
@@ -28,7 +28,7 @@ export default function Header() {
               type="search"
               name="search"
               placeholder="Search Here"
-              className="bg-[#e3e5da] h-10 sm:h-[2.5rem] px-5 w-[30rem] sm:w-[82vw] sm:ml-[1rem] rounded-[5px] sm:rounded-[10px] focus:outline-none focus:w-[35rem] sm:focus:w-[82vw] sm:mb-[-13rem] placeholder:text-primaryOne placeholder:uppercase sm:placeholder:text-[0.9rem]"
+              className="bg-[#e3e5da] h-10 sm:h-[2.5rem] px-5 w-[33vw] sm:w-[82vw] sm:ml-[1rem] rounded-[5px] sm:rounded-[10px] focus:outline-none focus:w-[35rem] sm:focus:w-[82vw] sm:mb-[-13rem] placeholder:text-primaryOne placeholder:uppercase sm:placeholder:text-[0.9rem]"
             />
             <button
               type="submit"

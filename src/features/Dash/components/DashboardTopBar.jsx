@@ -15,7 +15,7 @@ export default function DashboardTopBar() {
   const currentMenuItem = navLinks.find((menuItem) => menuItem.path === location.pathname); 
   
   return (
-    <div className="flex gap-[35rem] lg:gap-0 lg:justify-around items-center bg-white px-[1rem] lg:px-[2rem] sm:h-[3rem] mt-[5.5rem] sm:mt-[6.4rem]">
+    <div className="flex gap-[40vw] lg:gap-0 lg:justify-around items-center bg-white px-[1rem] lg:px-[2rem] sm:h-[3rem] mt-[5.5rem] sm:mt-[6.4rem]">
       <div className="flex flex-col h-20 font-[600] justify-center lg:ml-[-6rem] sm:ml-[-10rem]">
         <span className="sm:hidden">{currentMenuItem.name}</span>
         <p

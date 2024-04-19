@@ -30,10 +30,10 @@ export default function ProjectRoutes() {
             <div className="fixed w-full z-30">
               <Header />
             </div>
-            <div className="fixed w-full left-[18rem] lg:left-[5rem] sm:left-[2.5rem] top-[2px] z-20">
+            <div className="fixed w-full left-[20vw] lg:left-[5rem] sm:left-[2.5rem] top-[2px] z-20">
               <DashboardTopBar />
             </div>
-            <div className="flex items-center ml-[18rem] lg:ml-[5rem] sm:ml-[3rem]">
+            <div className="flex items-center ml-[20vw] lg:ml-[5rem] sm:ml-[3rem]">
               <div className="flex-none w-[65%] lg:w-[99.8%] ">
                 <Routes>
                   <Route path="/" element={<Dash />} />

@@ -15,10 +15,10 @@ export default function userProduct() {
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10"> 
       <DisplaySideBar/>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">My Products</h1>
       </div>
-      <div className="grid w-[45rem] lg:w-[40rem] sm:w-[82vw] bg-white px-[2rem] sm:px-[0.3rem] py-[1rem] rounded-[10px]">
+      <div className="grid w-[50vw] lg:w-[40rem] sm:w-[82vw] bg-white px-[2rem] sm:px-[0.3rem] py-[1rem] rounded-[10px]">
         <div className="flex gap-[4rem] text-[0.9rem] font-[600]">
           <h1>Products</h1>
           <h1 className="text-primaryOne">View All</h1>
@@ -102,7 +102,7 @@ export default function userProduct() {
 
         </form>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[82vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[82vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Delivery</h1>
       </div>
       <div className="flex justify-center gap-[2rem] w-[45rem] lg:w-[40rem] sm:w-[82vw] bg-white px-[2rem] py-[1rem] rounded-[10px]">

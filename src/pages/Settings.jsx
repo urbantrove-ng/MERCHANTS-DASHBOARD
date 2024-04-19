@@ -55,7 +55,7 @@ export default function Settings() {
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] flex gap-[2rem] sm:gap-[4rem] items-center rounded-[10px] py-[0.5rem] px-[3rem] sm:px-[0.5rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] flex gap-[2rem] sm:gap-[4rem] items-center rounded-[10px] py-[0.5rem] px-[3rem] sm:px-[0.5rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <div className="w-[7rem] sm:w-[3rem] h-[7rem] sm:h-[5rem] mt-[-2rem] text-primaryOne">
           <IoSettingsSharp className="text-[5rem] sm:text-[3rem] sm:mt-[1rem]" />
           <IoSettingsSharp className="text-[5rem] sm:text-[3rem] ml-[2.8rem] sm:ml-[2.4rem] mt-[-1.8rem] sm:mt-[-2.5rem]" />

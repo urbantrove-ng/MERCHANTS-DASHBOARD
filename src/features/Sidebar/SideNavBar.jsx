@@ -30,7 +30,7 @@ export default function SideNavBar() {
                   to={path}
                   className={({ isActive }) =>
                     isActive
-                      ? "bg-[#e3e5da] text-black flex items-center m-auto gap-[0.5rem] py-[0.8rem] px-[2.3rem] lg:px-[1.2rem] sm:px-[0.2rem] sm:w-[2.1rem] sm:ml-[-0.3rem] text-[1.5rem] rounded-r-[50px] sm:rounded-r-[10px] lg:rounded-r-none font-[600]"
+                      ? "bg-[#e3e5da] text-black flex items-center m-auto gap-[0.5rem] py-[0.8rem] px-[2.3rem] lg:px-[1.2rem] sm:px-[0.7rem] sm:w-[2.6rem] sm:ml-[-0.5rem] text-[1.5rem] rounded-r-[50px] sm:rounded-r-[10px] lg:rounded-r-none font-[600]"
                       : "bg-[#FBF7F4] text-primaryOne flex items-center m-auto gap-[0.5rem] py-[0.8rem] lg:px-[1.2rem] sm:px-[0.4rem] px-[1.8rem] sm:ml-[-0.3rem] text-[1.5rem] rounded-r-[50px] hover:bg-[#f0f0ec] transition duration-300"
                   }
                   end

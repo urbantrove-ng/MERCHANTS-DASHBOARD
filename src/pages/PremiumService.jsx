@@ -14,7 +14,7 @@ export default function PremiumService() {
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
         <DisplaySideBar />
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[87vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[87vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Premium</h1>
       </div>
       <div className="px-[3rem] sm:px-[0.2rem] mt-[2rem] sm:mt-[0.5rem]">
@@ -124,7 +124,7 @@ export default function PremiumService() {
           </button>
         </div>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[85vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[85vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Service</h1>
       </div>
       <form action="" className="px-[4rem] sm:px-[1rem] grid">
@@ -133,7 +133,7 @@ export default function PremiumService() {
         </label>
         <input
           type="number"
-          className="border-primaryOne border-[2px] w-[25rem] sm:w-[80vw] sm:h-[1.5rem] py-[1rem] px-[0.4rem] focus:outline-none rounded-[10rem]"
+          className="border-primaryOne border-[2px] w-[35vw] lg:w-[30rem] sm:w-[80vw] sm:h-[1.5rem] py-[1rem] px-[0.4rem] focus:outline-none rounded-[10rem]"
         />
         <h1 className="mt-[0.6rem]">
           The higher the price the higher the advantage you have

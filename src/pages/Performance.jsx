@@ -67,13 +67,13 @@ export default function Performance() {
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Performance Report</h1>
       </div>
       <div className="grid w-[45rem] lg:w-[40rem] sm:w-[83vw] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
         <Line data={chartData} options={option}/>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Report History</h1>
       </div>
       <div>
@@ -82,7 +82,7 @@ export default function Performance() {
             return (
               <div
                 key={index}
-                className="bg-primaryTwo w-[40rem] lg:w-[37rem] sm:w-[83vw] grid gap-[1rem] px-[2rem] py-[1rem] rounded-[5px]"
+                className="bg-primaryTwo w-[44.5vw] lg:w-[37rem] sm:w-[83vw] grid gap-[1rem] px-[2rem] py-[1rem] rounded-[5px]"
               >
                 <h1>{data.text}</h1>
               </div>

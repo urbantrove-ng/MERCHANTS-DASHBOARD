@@ -35,7 +35,7 @@ export const RightSideBar = () => {
             )}
           </div>
           <div
-            className={`w-[20rem] sm:w-[60vw] h-[17rem] ${
+            className={`w-[23vw] lg:w-[40vw] sm:w-[70vw] h-[17rem] ${
               showCalendar ? "block" : "hidden"
             }`}
           >
@@ -43,7 +43,7 @@ export const RightSideBar = () => {
           </div>
         </div>
         <div className="grid justify-center">
-          <div className="flex justify-center gap-[13rem] sm:gap-[9rem] mt-[2rem]">
+          <div className="flex justify-center gap-[13rem] sm:gap-[35vw] mt-[2rem]">
             <h1>Activity</h1>
             <h1
               className="text-primaryOne cursor-pointer"
@@ -52,7 +52,7 @@ export const RightSideBar = () => {
               View All
             </h1>
           </div>
-          <div className="w-[20rem] sm:w-[70vw] sm:px-[1rem] rounded-[5px] h-[3rem] bg-[#fbf7f4] mt-[1rem] m-auto">
+          <div className="w-[23vw] lg:w-[40vw] sm:w-[80vw] sm:px-[1rem] rounded-[5px] h-[3rem] bg-[#fbf7f4] mt-[1rem] m-auto">
             <Notifications />
           </div>
         </div>

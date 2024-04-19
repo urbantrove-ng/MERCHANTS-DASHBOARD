@@ -35,7 +35,7 @@ export default function Faq() {
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
-      <div className="w-[45rem] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[2rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[2rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem]">FAQ</h1>
       </div>
       <div className="grid justify-center gap-[1rem]">
@@ -43,7 +43,7 @@ export default function Faq() {
             return (
               <div
                 key={index}
-                className="bg-primaryTwo w-[40rem] lg:w-[38rem] sm:w-[83vw] flex gap-[1rem] sm:gap-[0.7rem] px-[2rem] sm:px-[0.8rem] py-[1rem] rounded-[5px]"
+                className="bg-primaryTwo w-[44.5vw] lg:w-[38rem] sm:w-[83vw] flex gap-[1rem] sm:gap-[0.7rem] px-[2rem] sm:px-[0.8rem] py-[1rem] rounded-[5px]"
               >
                 <h1>{data.text}</h1>
                 <button className="bg-white px-[1rem] sm:h-[4rem] sm:m-auto rounded-[10px]"><IoIosArrowForward/></button>
