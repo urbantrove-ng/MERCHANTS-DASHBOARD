@@ -20,7 +20,7 @@ export default function SideNavBar() {
           <span className="text-[1.4rem] font-[600] lg:hidden">Urban Trove</span>
         </div>
 
-        <div className="flex flex-col m-auto justify-center w-[15rem] lg:w-[4rem] sm:w-[2rem]">
+        <div className="flex flex-col m-auto justify-center w-[17vw] lg:w-[4rem] sm:w-[2rem]">
           {navLinks.map((menuItem, index) => {
             const { icon, path, name } = menuItem;
 

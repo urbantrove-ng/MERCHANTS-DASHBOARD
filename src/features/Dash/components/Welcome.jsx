@@ -16,7 +16,7 @@ export default function Welcome() {
       <div
         className={`${
           closeWelcome ? "hidden" : "block"
-        } flex gap-[1px] sm:gap-0 w-[44.5vw] lg:w-[42rem] sm:w-[83vw] h-[15rem] sm:h-[9rem] bg-gradient-to-br from-[rgba(208,212,197,1)] to-[rgba(151,173,177,1)] mt-[-10rem] relative rounded-[10px]`}
+        } flex gap-[1px] sm:gap-0 w-[43.5vw] lg:w-[42rem] sm:w-[83vw] h-[15rem] sm:h-[9rem] bg-gradient-to-br from-[rgba(208,212,197,1)] to-[rgba(151,173,177,1)] mt-[-10rem] relative rounded-[10px]`}
       >
         <div className="w-[12rem] sm:ml-[-0.3rem] sm:w-[8rem] h-[16rem] sm:h-[10rem] ml-[1rem] mt-[-1.6rem] sm:mt-[-1.5rem]">
           <img src={woman} alt="" className="w-full h-full object-cover sm:object-cover" />

@@ -4,7 +4,7 @@ export default {
   theme: {
     screens: {
       "2xl": { max: "2000px" },
-      // => @media (max-width: 1535px) { ... }
+      // => @media (max-width: 1535px) { ... } 
 
       xl: { max: "1400px" },
       // => @media (max-width: 1300px) { ... }
@@ -52,5 +52,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar")({ preferredStrategy: "pseudoelements" }),
+  ],
 };

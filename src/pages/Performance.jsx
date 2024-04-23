@@ -63,17 +63,17 @@ export default function Performance() {
     },
   };
   return (
-    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.2rem] font-inter">
+    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.2rem] font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
-      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[47vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Performance Report</h1>
       </div>
-      <div className="grid w-[45rem] lg:w-[40rem] sm:w-[83vw] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
+      <div className="grid w-[47vw] lg:w-[40rem] sm:w-[83vw] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
         <Line data={chartData} options={option}/>
       </div>
-      <div className="w-[50vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[47vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Report History</h1>
       </div>
       <div>

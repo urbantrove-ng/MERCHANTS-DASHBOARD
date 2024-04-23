@@ -23,7 +23,7 @@ export default function ProjectRoutes() {
     <>
       <Router>
         <div className="flex">
-          <div className="flex-none w-[20%] lg:w-[10%] sm:w-[15%] fixed top-0 left-0 h-full overflow-y-auto z-50">
+          <div className="flex-none w-[20%] lg:w-[10%]  sm:w-[15%] fixed top-0 left-0 h-full overflow-y-scroll no-scrollbar z-50">
             <SideNavBar />
           </div>
           <div className="flex-grow">
@@ -49,7 +49,7 @@ export default function ProjectRoutes() {
                   {/* <Route path="/bid" element={<Bid />} />  */}
                 </Routes>
               </div>
-              <div className="bg-[#fbf7f4] flex-grow lg:flex-none lg:w-[1px] lg:mt-[2rem]] mt-[10rem] lg:hidden">
+              <div className="bg-[#fbf7f4] flex-grow  lg:flex-none lg:w-[1px] lg:mt-[2rem]] mt-[10rem] lg:hidden">
                 <RightSideBar />
               </div>
             </div>

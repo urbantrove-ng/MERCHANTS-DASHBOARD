@@ -10,21 +10,34 @@ export default function PremiumService() {
     setSelectedContent(content);
   };
   return (
-    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.1rem] font-inter">
+    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.1rem] font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
         <DisplaySideBar />
       </div>
-      <div className="w-[50vw] lg:w-[40rem] sm:w-[87vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[47vw] lg:w-[40rem] sm:w-[87vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Premium</h1>
       </div>
-      <div className="px-[3rem] sm:px-[0.2rem] mt-[2rem] sm:mt-[0.5rem]">
+      <div className="px-[1rem] sm:px-[0.2rem] mt-[2rem] sm:mt-[0.5rem]">
         <h1 className="text-[1.2rem] mb-[1rem] ">Billing Plan</h1>
-        <div className="px-[1rem] sm:px-0 flex gap-[2rem] sm:gap-[0.5rem]">
+        <div className="px-[1rem] sm:px-0 flex justify-center gap-[2rem] sm:gap-[0.5rem]">
           <div
-            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[39vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${selectedContent === 'Basic' ? 'bg-primaryTwo' : 'bg-[#fbf7f4]'}`}
+            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[39vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${
+              selectedContent === "Basic" ? "bg-primaryTwo" : "bg-[#fbf7f4]"
+            }`}
             onClick={() => handleContentClick("Basic")}
           >
-            <img src={greenegg} alt="" className="m-auto" />
+            <div>
+              <input
+                type="radio"
+                id="basic"
+                name="plan"
+                value="Basic"
+                checked={selectedContent === "Basic"}
+                onChange={() => handleContentClick("Basic")}
+                className="w-6 h-6 accent-primaryOne"
+              />
+              <label htmlFor="basic"></label>
+            </div>{" "}
             <h1 className="text-[1.1rem] font-[100]">Billed Monthly</h1>
             <h1 className="text-[#836427] uppercase text-[2rem] sm:text-[1.3rem]">
               Basic
@@ -34,7 +47,9 @@ export default function PremiumService() {
             </h1>
             <ul className="text-left ml-[1.8rem] sm:ml-[0.5rem] sm:text-[0.8rem]">
               <li className="flex items-center gap-[0.5rem] sm:gap-[0.4rem]">
-                <span className={`w-[0.7rem] h-[0.7rem] bg-primaryTwo   rounded-[10rem]`}></span>
+                <span
+                  className={`w-[0.7rem] h-[0.7rem] bg-primaryTwo   rounded-[10rem]`}
+                ></span>
                 Maximum of 5 ads
               </li>
               <li className="flex items-center sm:items-start gap-[0.5rem] sm:gap-[0.3rem]">
@@ -44,10 +59,23 @@ export default function PremiumService() {
             </ul>
           </div>
           <div
-            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[43vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${selectedContent === 'Premium' ? 'bg-primaryTwo' : 'bg-[#fbf7f4]'}`}
+            className={`border-[1px] border-primaryOne w-[17rem] lg:w-[16rem] sm:w-[43vw] py-[2rem] sm:py-[1rem] text-center rounded-[25px] cursor-pointer ${
+              selectedContent === "Premium" ? "bg-primaryTwo" : "bg-[#fbf7f4]"
+            }`}
             onClick={() => handleContentClick("Premium")}
           >
-            <img src={purpleegg} alt="" className="m-auto" />
+            <div>
+              <input
+                type="radio"
+                id="premium"
+                name="plan"
+                value="Premium"
+                checked={selectedContent === "Premium"}
+                onChange={() => handleContentClick("Premium")}
+                className="w-6 h-6 accent-primaryOne"
+              />
+              <label htmlFor="premium"></label>
+            </div>
             <h1 className="text-[1.1rem] font-[100]">Billed Monthly</h1>
             <h1 className="text-[#836427] uppercase text-[2rem] sm:text-[1.3rem]">
               Premium
@@ -85,8 +113,12 @@ export default function PremiumService() {
               </h1>
               <div className="bg-primaryTwo px-[0.4rem] rounded-[5px]">
                 <div className="flex justify-between border-b-[1px] border-[#d4d4d8] py-[0.6rem] px-[0.4rem]">
-                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">Total</h1>
-                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">₦12500</h1>
+                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
+                    Total
+                  </h1>
+                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
+                    ₦12500
+                  </h1>
                 </div>
                 <h1 className="py-[0.6rem] text-[1.2rem] sm:text-[1rem] font-[300]">
                   Renews for ₦12500 every month
@@ -110,8 +142,12 @@ export default function PremiumService() {
               </h1>
               <div className="bg-primaryTwo px-[0.4rem] rounded-[5px]">
                 <div className="flex justify-between border-b-[1px] border-[#d4d4d8] py-[0.6rem] px-[0.4rem]">
-                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">Total</h1>
-                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">₦15000</h1>
+                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
+                    Total
+                  </h1>
+                  <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
+                    ₦15000
+                  </h1>
                 </div>
                 <h1 className="py-[0.6rem] text-[1.2rem] sm:text-[1rem] font-[300]">
                   Renews for ₦15000 every month
@@ -124,11 +160,14 @@ export default function PremiumService() {
           </button>
         </div>
       </div>
-      <div className="w-[50vw] lg:w-[40rem] sm:w-[85vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="w-[47vw] lg:w-[40rem] sm:w-[85vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Service</h1>
       </div>
       <form action="" className="px-[4rem] sm:px-[1rem] grid">
-        <label htmlFor="" className="text-[1.3rem] sm:text-[1rem] text-[#444B59]">
+        <label
+          htmlFor=""
+          className="text-[1.3rem] sm:text-[1rem] text-[#444B59]"
+        >
           Enter Amount
         </label>
         <input

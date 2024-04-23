@@ -20,12 +20,14 @@ export const RightSideBar = () => {
   }
 
   return (
-    <> 
-      <div className={`py-[2rem] sm:py-[0.5rem] overflow-y-auto lg:overflow-none lg:max-h-[100vh] px-[1rem] sm:px-[0.3rem] h-[40rem] lg:h-[50rem] lg:bg-[#fbf7f4] lg:rounded-tl-[5px] lg:rounded-bl-[5px]`}>
+    <>
+      <div
+        className={`py-[2rem] sm:py-[0.5rem] overflow-y-scroll no-scrollbar lg:overflow-none lg:max-h-[100vh] px-[1rem] sm:px-[0.3rem] h-[40rem] lg:h-[50rem] lg:bg-[#fbf7f4] lg:rounded-tl-[5px] lg:rounded-bl-[5px]`}
+      >
         <div className="grid justify-center gap-[1rem]">
           <div
             onClick={shouldShow}
-            className="flex items-center gap-[15rem] sm:gap-[10rem] hover:bg-[#e3e5da] transition duration-300 rounded-[5px] px-[0.4rem] py-[0.7rem] cursor-pointer"
+            className="flex justify-center items-center w-[23vw] lg:w-[40vw] sm:w-[70vw] gap-[15rem] sm:gap-[10rem] hover:bg-[#e3e5da] transition duration-300 rounded-[5px] px-[0.4rem] py-[0.7rem] cursor-pointer"
           >
             <h1>Calendar</h1>
             {showCalendar ? (

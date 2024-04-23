@@ -37,9 +37,9 @@ const data = [
 export default function DashBoard() {
   const navigate = useNavigate();
   return (
-    <div className="relative grid gap-[2rem] sm:gap-0 mt-[11rem] sm:mt-[9rem] overflow-y-auto max-h-[80vh] lg:max-h-[100vh] justify-center py-[3rem] px-[3rem] lg:px-[1rem] sm:px-[0.4rem] font-inter">
+    <div className="relative grid gap-[2rem] sm:gap-0 mt-[11rem] sm:mt-[9rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[100vh] justify-center py-[3rem] px-[3rem] lg:px-[1rem] sm:px-[0.4rem] font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
-      <DisplaySideBar/>
+        <DisplaySideBar />
       </div>
       <Welcome />
       <div className="grid m-auto grid-cols-4 sm:grid-cols-3 gap-[1rem] sm:gap-[0.5rem] p-[1rem] sm:p-0">

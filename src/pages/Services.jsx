@@ -6,11 +6,11 @@ import DisplaySideBar from "../features/RightSideBar/DisplaySideBar";
 
 export default function Services() {
   return (
-    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] overflow-y-auto max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.5rem] font-inter">
+    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.5rem] font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
       <DisplaySideBar/>
       </div>
-      <div className="flex items-center mb-[2rem] gap-[7rem] sm:gap-[2rem] w-[50vw] lg:w-[40rem] sm:w-[81vw] h-[8rem] sm:h-[1rem] rounded-[10px] py-[2.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+      <div className="flex items-center mb-[2rem] gap-[7rem] sm:gap-[2rem] w-[47vw] lg:w-[40rem] sm:w-[81vw] h-[8rem] sm:h-[1rem] rounded-[10px] py-[2.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
         <div className="ml-[3rem] sm:ml-[0.5rem] w-[8rem] sm:mt-[0.8rem] sm:w-[6rem] h-[12rem] sm:h-[7rem] sm:mb-[2rem]">
           <img src={checklist} className="w-full h-full object-cover" alt="" />
         </div>
@@ -20,7 +20,7 @@ export default function Services() {
         <h1 className="font-[600] text-[1.8rem] sm:text-[1.4rem]">Services</h1>
       </div>
 
-      <div className="grid gap-[0.5rem] w-[50vw] lg:w-[40rem] sm:w-[81vw] bg-white px-[2rem] sm:px-[0.5rem] py-[1rem] rounded-[10px]">
+      <div className="grid gap-[0.5rem] w-[47vw] lg:w-[40rem] sm:w-[81vw] bg-white px-[2rem] sm:px-[0.5rem] py-[1rem] rounded-[10px]">
         <h1 className="text-[1.4rem] sm:text-[1rem] font-[600]">Update Service Information</h1>
         <div className="flex justify-center gap-[2rem] sm:gap-[0.8rem]">
           <div className="w-[10rem] sm:w-[23vw] h-[10rem] sm:h-[7rem] grid justify-center bg-primaryTwo rounded-[5px] text-[#a7a7a7] hover:text-black cursor-pointer transition-all duration-300">
