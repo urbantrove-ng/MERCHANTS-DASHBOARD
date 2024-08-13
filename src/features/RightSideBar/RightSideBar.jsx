@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Calendar from "../../components/Calender/Calender";
-import Notification from "../../pages/Notifications";
-import {
-  FaChevronDown,
-  FaChevronUp,
-  FaCircleChevronLeft,
-} from "react-icons/fa6";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Notifications from "../Notifi/SidebarNotifications";
-import { FaChevronLeft } from "react-icons/fa";
-// import 'react-calendar/dist/Calendar.css';
 
 export const RightSideBar = () => {
   const navigate = useNavigate();
@@ -18,18 +11,15 @@ export const RightSideBar = () => {
   function shouldShow() {
     setShowCalendar(!showCalendar);
   }
-
   return (
-    <>
-      <div
-        className={`py-[2rem] sm:py-[0.5rem] overflow-y-scroll no-scrollbar lg:overflow-none lg:max-h-[100vh] px-[1rem] sm:px-[0.3rem] h-[40rem] lg:h-[50rem] lg:bg-[#fbf7f4] lg:rounded-tl-[5px] lg:rounded-bl-[5px]`}
-      >
-        <div className="grid justify-center gap-[1rem]">
+    <section className="  lg:flex justify-center items-start hidden bg-[#FBF7F4]  w-full py-4  scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll">
+      <div className=" w-[272px] ">
+        <div className=" flex flex-col items-center ">
           <div
             onClick={shouldShow}
-            className="flex justify-center items-center w-[23vw] lg:w-[40vw] sm:w-[70vw] gap-[15rem] sm:gap-[10rem] hover:bg-[#e3e5da] transition duration-300 rounded-[5px] px-[0.4rem] py-[0.7rem] cursor-pointer"
+            className="flex justify-between items-center bg-[#fbf7f4] w-[276px] lg:h-[26.98px] px-2 hover:bg-[#e3e5da] transition duration-300 rounded-[5px]  cursor-pointer"
           >
-            <h1>Calendar</h1>
+            <h1 className=" text-[16px] font-medium">Calendar</h1>
             {showCalendar ? (
               <FaChevronDown className="text-[0.8rem]" />
             ) : (
@@ -37,15 +27,15 @@ export const RightSideBar = () => {
             )}
           </div>
           <div
-            className={`w-[23vw] lg:w-[40vw] sm:w-[70vw] h-[17rem] ${
+            className={`h-[17rem] lg:w-[300px] w-[200px] ${
               showCalendar ? "block" : "hidden"
             }`}
           >
             <Calendar />
           </div>
         </div>
-        <div className="grid justify-center">
-          <div className="flex justify-center gap-[13rem] sm:gap-[35vw] mt-[2rem]">
+        <div className="  flex-col gap-4 bg-[#fbf7f4] ">
+          <div className="flex justify-around">
             <h1>Activity</h1>
             <h1
               className="text-primaryOne cursor-pointer"
@@ -54,11 +44,11 @@ export const RightSideBar = () => {
               View All
             </h1>
           </div>
-          <div className="w-[23vw] lg:w-[40vw] sm:w-[80vw] sm:px-[1rem] rounded-[5px] h-[3rem] bg-[#fbf7f4] mt-[1rem] m-auto">
+          <div className="  rounded-[5px] h-[3rem] lg:h-[200px] bg-[#fbf7f4] ">
             <Notifications />
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };

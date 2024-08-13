@@ -1,67 +1,54 @@
-import { Bell, CircleUserRound, Search } from "lucide-react";
-import { IoSearch } from "react-icons/io5";
-import { BsFillBellFill } from "react-icons/bs";
-import { RxAvatar } from "react-icons/rx";
 import { navLinks } from "../../components/NavLink";
-import React from "react";
 import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import DashboardTopBar from "../Dash/components/DashboardTopBar";
 
 export default function Header() {
-  const navigate = useNavigate()
   const location = useLocation();
   const currentMenuItem = navLinks.find(
     (menuItem) => menuItem.path === location.pathname
   );
 
-  function toNotifs(){
-    navigate("/notifications")
-    console.log('clicked');
-  }
-
   return (
-    <div className="ml-[20vw] lg:ml-[5rem] sm:ml-[1.5rem]">
-      <nav className="bg-white py-[1.5rem] sm:py-[1rem] px-[2rem] flex sm:flex-col-reverse justify-between w-[100%] items-center">
-        <div className="flex items-center">
-          <div className="relative text-black">
-            <input
-              type="search"
-              name="search"
-              placeholder="Search Here"
-              className="bg-[#e3e5da] h-10 sm:h-[2.5rem] px-5 w-[33vw] sm:w-[82vw] sm:ml-[1rem] rounded-[5px] sm:rounded-[10px] focus:outline-none focus:w-[35rem] sm:focus:w-[82vw] sm:mb-[-13rem] placeholder:text-primaryOne placeholder:uppercase sm:placeholder:text-[0.9rem]"
+    <nav className=" flex flex-col lg:h-[158px]  w-full bg-[#FBF7F4]">
+      <div className=" flex justify-between px-4 lg:h-[90px] h-[90px] lg:items-center items-baseline  border-b-4 w-full">
+        <h2 className=" lg:hidden block font-bold">{currentMenuItem.name}</h2>
+        <input
+          className=" lg:w-[607px] w-[300px] lg:h-[48px] top-[2.6rem] lg:top-0 lg:right-0  h-[30px] bg-[#647C0C1A] rounded-[8px] pl-4 lg:relative absolute"
+          placeholder="Search here"
+        />
+        <div className=" flex justify-center items-baseline lg:items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
             />
-            <button
-              type="submit"
-              className="absolute right-0 top-0 mt-[0.6rem] mr-4 text-[1.3rem] text-primaryOne"
-            >
-              <IoSearch />
-            </button>
-          </div>
-        </div>
+          </svg>
 
-        <div className="flex sm:px-[1rem] items-center justify-between sm:w-[85vw] sm:h-[5vh] sm:ml-[1.3rem] sm:mt-[-0.5rem] sm:mb-[0.5rem]">
-          <div className="flex items-center gap-[0.2rem] ml-[-0.7rem]">
-            <span className="2xl:hidden sm:block font-[600] sm:text-[1.3rem]">
-              {currentMenuItem.icon}
-            </span>
-            <span className="2xl:hidden sm:block font-[600] sm:text-[1.1rem]">
-              {currentMenuItem.name} 
-            </span>
-          </div>
-          <div className="flex items-center gap-[2rem] sm:gap-[0.8rem]" onClick={toNotifs}>
-            <div className="relative cursor-pointer" >
-              <BsFillBellFill className="text-[1.5rem] sm:text-[1.2rem]" />
-              <div className="absolute top-[-0.4rem] right-[-0.2rem] bg-[#b91c1c] rounded-full w-[1.2rem] sm:w-[1rem] h-[1.2rem] sm:h-[1rem] flex items-center justify-center text-xs text-white">
-                15
-              </div>
-            </div>
-            <div className="relative cursor-pointer">
-              <RxAvatar className="text-[2.2rem] sm:text-[1.5rem]" />
-            </div>
-          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
         </div>
-      </nav>
-      <hr className="bg-primaryOne h-[2px]" />
-    </div>
+      </div>
+      <DashboardTopBar />
+    </nav>
   );
 }

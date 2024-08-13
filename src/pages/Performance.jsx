@@ -1,5 +1,4 @@
-import React from "react";
-import { Chart as ChartJS, defaults, plugins } from "chart.js/auto";
+import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import DisplaySideBar from "../features/RightSideBar/DisplaySideBar";
 defaults.maintainAspectRatio = false;
@@ -63,28 +62,36 @@ export default function Performance() {
     },
   };
   return (
-    <div className="relative grid gap-[1rem] mt-[10rem] sm:mt-[8.5rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[90vh] justify-center py-[3rem] px-[1rem] sm:px-[0.2rem] font-inter">
+    <div className="relative grid gap-[2rem] lg:w-[812px] w-[330px]  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6  font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
-      <DisplaySideBar/>
+        <DisplaySideBar />
       </div>
-      <div className="w-[47vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-        <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Performance Report</h1>
+      <div className=" flex justify-center items-center">
+        <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+          <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
+            Performance Report
+          </h1>
+        </div>
       </div>
-      <div className="grid w-[47vw] lg:w-[40rem] sm:w-[83vw] h-[17rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
-        <Line data={chartData} options={option}/>
+      <div className="lg:w-[761px] w-[300px] lg:h-[20rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
+        <Line data={chartData} options={option} />
       </div>
-      <div className="w-[47vw] lg:w-[40rem] sm:w-[83vw] rounded-[10px] py-[0.5rem] px-[1rem] bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-        <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">Report History</h1>
+      <div className=" flex justify-center items-center">
+        <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+          <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
+            Report History
+          </h1>
+        </div>
       </div>
       <div>
-        <div className="grid justify-center gap-[1rem]">
+        <div className=" flex flex-col items-center gap-2">
           {dataText.map((data, index) => {
             return (
               <div
                 key={index}
-                className="bg-primaryTwo w-[44.5vw] lg:w-[37rem] sm:w-[83vw] grid gap-[1rem] px-[2rem] py-[1rem] rounded-[5px]"
+                className="bg-primaryTwo  lg:w-[37rem] w-[300px] lg:h-[100px] h-[80px]  flex justify-center items-center  rounded-[5px]"
               >
-                <h1>{data.text}</h1>
+                <p className=" lg:w-[35rem] w-[280px] text-[12px] lg:text-[16px]">{data.text}</p>
               </div>
             );
           })}

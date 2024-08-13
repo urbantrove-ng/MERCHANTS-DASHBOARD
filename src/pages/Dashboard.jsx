@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import Welcome from "../features/Dash/components/Welcome";
-import { BsGridFill } from "react-icons/bs";
 import {
   FaPenSquare,
   FaEnvelope,
@@ -10,12 +8,7 @@ import {
 import { SiSailsdotjs } from "react-icons/si";
 import { AiFillMessage } from "react-icons/ai";
 import { RiBarChartBoxFill } from "react-icons/ri";
-import {
-  IoSettingsSharp,
-  IoDiamondOutline,
-  IoLogOutOutline,
-} from "react-icons/io5";
-import { FaHandshakeAngle } from "react-icons/fa6";
+import { IoSettingsSharp, IoDiamondOutline } from "react-icons/io5";
 import { IoPersonSharp } from "react-icons/io5";
 import { FaClock } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
@@ -27,7 +20,7 @@ const data = [
   { name: "Service", icon: <SiSailsdotjs />, path: "/services" },
   { name: "Feedback", icon: <AiFillMessage />, path: "/feedback" },
   { name: "Performance", icon: <RiBarChartBoxFill />, path: "/performance" },
-  { name: "Notifications", icon: <FaEnvelope />, path: "/notifications" }, 
+  { name: "Notifications", icon: <FaEnvelope />, path: "/notifications" },
   { name: "Settings", icon: <IoSettingsSharp />, path: "/settings" },
   { name: "Wallet", icon: <FaWallet />, path: "/wallet" },
   // { name: "Bid", icon: <FaHandshakeAngle />, path: "/bid" },
@@ -37,46 +30,52 @@ const data = [
 export default function DashBoard() {
   const navigate = useNavigate();
   return (
-    <div className="relative grid gap-[2rem] sm:gap-0 mt-[11rem] sm:mt-[9rem] scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-primaryTwo  overflow-y-scroll max-h-[80vh] lg:max-h-[100vh] justify-center py-[3rem] px-[3rem] lg:px-[1rem] sm:px-[0.4rem] font-inter">
+    <div className="relative grid gap-[2rem] lg:w-[812px] w-[330px]  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center py-[3rem] lg:px-[3rem] px-[1rem]  font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
         <DisplaySideBar />
       </div>
       <Welcome />
-      <div className="grid m-auto grid-cols-4 sm:grid-cols-3 gap-[1rem] sm:gap-[0.5rem] p-[1rem] sm:p-0">
-        {data.map((data, index) => {
-          const { name, icon, path } = data;
+      <div className=" flex justify-center items-center">
+        <div className=" flex flex-col items-center ">
+          <div className="grid lg:grid-cols-4 grid-cols-3 lg:gap-8 gap-2 lg:w-[700px]   ">
+            {data.map((data, index) => {
+              const { name, icon, path } = data;
 
-          return (
-            <div
-              key={index}
-              onClick={() => navigate(path)}
-              className="grid justify-center m-auto text-center w-[8.5rem] sm:w-[26vw] rounded-[10px] h-[8rem] sm:h-[6rem] bg-primaryTwo cursor-pointer hover:translate-y-[-0.5rem] transition-all duration-300"
-            >
-              <div className="w-[5rem] h-[4rem] sm:h-[2rem] mt-[1rem] relative">
-                <span className="text-primaryOne absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[3rem]">
-                  {icon}
-                </span>
+              return (
+                <div
+                  key={index}
+                  onClick={() => navigate(path)}
+                  className="flex justify-center items-center text-center w-[90px] h-[90px] lg:w-[136px] lg:h-[128px] rounded-[10px]  bg-primaryTwo cursor-pointer hover:translate-y-[-0.5rem] transition-all duration-300"
+                >
+                  <div className=" flex flex-col items-center gap-[4px]">
+                    <span className="text-primaryOne lg:text-[4rem] text-[3rem]">
+                      {icon}
+                    </span>
+                    <h1 className="lg:text-[0.8rem] text-[0.7rem]">{name}</h1>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="flex  items-center justify-center lg:w-[18rem] w-[18rem] h-[140px] lg:h-[128px] rounded-[10px] bg-white ">
+              <div className=" flex flex-col items-center gap-2">
+                <div className="flex gap-[3rem] text-[0.9rem] ">
+                  <h1>Events</h1>
+                  <h1 className="text-primaryOne">View All</h1>
+                </div>
+                <div className="flex gap-[1rem]">
+                  <div className="grid justify-center w-[10rem] h-[5rem] bg-primaryTwo rounded-[10px]">
+                    <IoPersonSharp className="text-[2rem] text-[#A7A7A7] m-auto pt-[0.3rem]" />
+                    <h1>Manager&apos;s Call</h1>
+                    <span className="flex items-center gap-[0.5rem] text-[0.8rem] text-[#a7a7a7]">
+                      <FaClock />
+                      <h1>2:30 PM, Today</h1>
+                    </span>
+                  </div>
+                  <div className="w-[3rem] h-[5rem] bg-primaryTwo rounded-[10px] relative">
+                    <FaPlus className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[1.5rem] text-[#a7a7a7]" />
+                  </div>
+                </div>
               </div>
-              <h1 className="text-[0.8rem]">{name}</h1>
-            </div>
-          );
-        })}
-        <div className="grid justify-center w-[18rem] h-[8rem] rounded-[10px] bg-white px-[1rem]">
-          <div className="flex gap-[3rem] mt-[0.3rem] text-[0.9rem] mb-[-1rem] ml-[0.3rem]">
-            <h1>Events</h1>
-            <h1 className="text-primaryOne">View All</h1>
-          </div>
-          <div className="flex gap-[1rem]">
-            <div className="grid justify-center w-[10rem] h-[5rem] bg-primaryTwo rounded-[10px]">
-              <IoPersonSharp className="text-[2rem] text-[#A7A7A7] m-auto pt-[0.3rem]" />
-              <h1>Manager's Call</h1>
-              <span className="flex items-center gap-[0.5rem] text-[0.8rem] text-[#a7a7a7]">
-                <FaClock />
-                <h1>2:30 PM, Today</h1>
-              </span>
-            </div>
-            <div className="w-[3rem] h-[5rem] bg-primaryTwo rounded-[10px] relative">
-              <FaPlus className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[1.5rem] text-[#a7a7a7]" />
             </div>
           </div>
         </div>
