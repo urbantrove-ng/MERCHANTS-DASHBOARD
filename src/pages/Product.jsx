@@ -199,6 +199,9 @@ export default function Product() {
   const [price, setPrice] = useState("");
   const [discount, setDiscount] = useState("");
   const axiosPrivate = useAxiosPrivate();
+  const [handleDelivery, setHandleDelivery] = useState("yes");
+  const [selectedDeliveryService, setSelectedDeliveryService] = useState("");
+  console.log(selectedDeliveryService);
   const [viewAll, setViewAll] = useState(false);
   const [newdata, setData] = useState([]);
   const [creatingProduct, setIsCreatingProduct] = useState(false);
@@ -259,12 +262,17 @@ export default function Product() {
             actualPrice: price,
             discount,
           },
+          delivery: {
+            handledByVendor: handleDelivery === "yes" ? true : false,
+            deliveryService: handleDelivery === "no" ? "swift_logistics" : null,
+          },
         }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
+      console.log(selectedDeliveryService);
       if (response.status === 200) {
         setIsCreatingProduct(false);
         setFiles([null, null, null, null]);
@@ -278,7 +286,7 @@ export default function Product() {
       }
     } catch (error) {
       setIsCreatingProduct(false);
-      console.error("Error adding product:", error);s
+      console.error("Error adding product:", error);
     }
   };
 
@@ -309,6 +317,7 @@ export default function Product() {
     const shortHashName = `${name.slice(0, 20)}...`;
     return shortHashName;
   };
+  console.log(handleDelivery);
   return (
     <div className="relative grid gap-[2rem] h-auto lg:w-[812px] w-full  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6 py-6  font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
@@ -329,7 +338,7 @@ export default function Product() {
               : "flex justify-center items-center  bg-white lg:w-[761px]  w-[310px] h-full  rounded-[10px]"
           }
         >
-          {!viewAll && (
+          {!viewAll && newdata.length > 0 && (
             <div className=" flex flex-col gap-4 items-center">
               <div className="flex gap-[4rem]  text-[0.9rem] font-[600]">
                 <p className="font-medium text-[16.01px]">Products</p>
@@ -370,6 +379,9 @@ export default function Product() {
                 })}
               </div>
             </div>
+          )}
+          {!viewAll && newdata.length === 0 && (
+            <p className=" text-black">You have no products</p>
           )}
           {viewAll && (
             <div className="bg-white">
@@ -470,204 +482,206 @@ export default function Product() {
           )}
         </div>
       </div>
-
-      <div className=" flex justify-center items-center">
-        <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-          <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
-            Add Products
-          </h1>
+      <form
+        onSubmit={handleSubmit}
+        className=" flex flex-col items-center gap-4"
+      >
+        <div className=" flex justify-center items-center">
+          <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+            <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
+              Add Products
+            </h1>
+          </div>
         </div>
-      </div>
-      <div className=" flex justify-center items-center">
-        <form
-          onSubmit={handleSubmit}
-          className="flex justify-around gap-[0.5rem] lg:gap-[0.5rem] lg:w-[761px] w-[300px]  bg-white lg:px-[2rem] px-[0.5rem] py-[1rem] rounded-[10px]"
-        >
-          <div className=" flex flex-col items-center gap-2">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              {files.map((file, index) => (
-                <div
-                  key={index}
-                  className="bg-primaryTwo lg:w-[40px] lg:h-[40px] h-[30px] w-[30px] flex flex-col justify-center items-center rounded-[10px] relative"
-                >
-                  <input
-                    type="file"
-                    id={`file-upload-${index}`}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                    accept="image/*"
-                    onChange={(e) => handleFileChange(index, e)}
-                  />
-                  <label
-                    htmlFor={`file-upload-${index}`}
-                    className="lg:text-[12px] text-[8px] cursor-pointer text-[gray] hover:text-black flex justify-center items-center w-full h-full"
+        <div className=" flex justify-center items-center">
+          <div className="flex justify-around gap-[0.5rem] lg:gap-[0.5rem] lg:w-[761px] w-[300px]  bg-white lg:px-[2rem] px-[0.5rem] py-[1rem] rounded-[10px]">
+            <div className=" flex flex-col items-center gap-2">
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                {files.map((file, index) => (
+                  <div
+                    key={index}
+                    className="bg-primaryTwo lg:w-[40px] lg:h-[40px] h-[30px] w-[30px] flex flex-col justify-center items-center rounded-[10px] relative"
                   >
-                    {file ? <MdOutlineUploadFile /> : "Add"}
-                  </label>
+                    <input
+                      type="file"
+                      required
+                      id={`file-upload-${index}`}
+                      className="absolute inset-0 opacity-0 cursor-pointer"
+                      accept="image/*"
+                      onChange={(e) => handleFileChange(index, e)}
+                    />
+                    <label
+                      htmlFor={`file-upload-${index}`}
+                      className="lg:text-[12px] text-[8px] cursor-pointer text-[gray] hover:text-black flex justify-center items-center w-full h-full"
+                    >
+                      {file ? <MdOutlineUploadFile /> : "Add"}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <div className=" gap-[0.5rem] text-[0.9rem] flex flex-col items-center">
+                <h1 className="lg:text-[0.8rem] text-[8px] text-center">
+                  Change Background
+                </h1>
+                <div className="flex gap-[0.1rem] lg:gap-[0.2rem]">
+                  <div className="w-[1rem] lg:w-[2rem] h-[1rem] lg:h-[2rem] bg-black rounded-[5px] cursor-pointer"></div>
+                  <div className="w-[1rem] lg:w-[2rem] h-[1rem] lg:h-[2rem] bg-[#7d972e] rounded-[5px] cursor-pointer"></div>
                 </div>
-              ))}
-            </div>
-            <div className=" gap-[0.5rem] text-[0.9rem] flex flex-col items-center">
-              <h1 className="lg:text-[0.8rem] text-[8px] text-center">
-                Change Background
-              </h1>
-              <div className="flex gap-[0.1rem] lg:gap-[0.2rem]">
-                <div className="w-[1rem] lg:w-[2rem] h-[1rem] lg:h-[2rem] bg-black rounded-[5px] cursor-pointer"></div>
-                <div className="w-[1rem] lg:w-[2rem] h-[1rem] lg:h-[2rem] bg-[#7d972e] rounded-[5px] cursor-pointer"></div>
               </div>
             </div>
-          </div>
-          <div
-            action=""
-            className=" flex flex-col items-center gap-2"
-            onSubmit={handleSubmit}
-          >
-            <div className="">
-              <input
-                type="text"
-                value={productName}
-                onChange={(e) => setProductName(e.target.value)}
-                placeholder="Add Product Name"
-                className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] flex justify-center items-start pl-4 rounded-[5px] focus:outline-none sm:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
-              />
-            </div>
-            <div className="flex flex-col space-y-4">
-              <select
-                id="category"
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
-              >
-                <option value="" disabled hidden>
-                  Select Product Category
-                </option>
-                {Array.from(
-                  new Set(
-                    categoriesData.map((category) => category.category_name)
-                  )
-                ).map((categoryName) => (
-                  <option key={categoryName} value={categoryName}>
-                    {categoryName}
-                  </option>
-                ))}
-              </select>
-
-              {selectedCategory && (
+            <div className=" flex flex-col items-center gap-2">
+              <div className="">
+                <input
+                  type="text"
+                  value={productName}
+                  required
+                  onChange={(e) => setProductName(e.target.value)}
+                  placeholder="Add Product Name"
+                  className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] flex justify-center items-start pl-4 rounded-[5px] focus:outline-none sm:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                />
+              </div>
+              <div className="flex flex-col space-y-4">
                 <select
-                  id="sub-category"
-                  value={selectedSubCategory}
-                  onChange={handleSubCategoryChange}
+                  id="category"
+                  value={selectedCategory}
+                  required
+                  onChange={handleCategoryChange}
                   className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
                 >
-                  <option value="" disabled selected hidden>
-                    Select Subcategory
+                  <option value="" disabled hidden>
+                    Select Product Category
                   </option>
-                  {subCategories.map((subCategory, index) => (
-                    <option key={index} value={subCategory}>
-                      {subCategory}
+                  {Array.from(
+                    new Set(
+                      categoriesData.map((category) => category.category_name)
+                    )
+                  ).map((categoryName) => (
+                    <option key={categoryName} value={categoryName}>
+                      {categoryName}
                     </option>
                   ))}
                 </select>
-              )}
+
+                {selectedCategory && (
+                  <select
+                    id="sub-category"
+                    required
+                    value={selectedSubCategory}
+                    onChange={handleSubCategoryChange}
+                    className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
+                  >
+                    <option value="" disabled selected hidden>
+                      Select Subcategory
+                    </option>
+                    {subCategories.map((subCategory, index) => (
+                      <option key={index} value={subCategory}>
+                        {subCategory}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
+              <div className="">
+                <textarea
+                  value={description}
+                  required
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Add Product Description"
+                  className="bg-primaryTwo lg:w-[486px]  flex justify-center w-[200px]  items-start lg:p-4 p-2 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="2"
+                ></textarea>
+              </div>
+              <div className="  flex flex-col items-center gap-2 lg:w-[486px] w-[200px]  ">
+                <input
+                  type="number"
+                  id="price"
+                  value={price}
+                  required
+                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="Add Product Price"
+                  className="bg-primaryTwo  lg:h-[49px] lg:w-full flex justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                />
+                <input
+                  value={discount}
+                  onChange={(e) => setDiscount(e.target.value)}
+                  type="number"
+                  id="price"
+                  required
+                  placeholder="Add Discount"
+                  className="bg-primaryTwo  lg:h-[49px] flex lg:w-full justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                />
+              </div>
             </div>
-            <div className="">
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Add Product Description"
-                className="bg-primaryTwo lg:w-[486px]  flex justify-center w-[200px]  items-start lg:p-4 p-2 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
-                name=""
-                id=""
-                cols="30"
-                rows="2"
-              ></textarea>
+          </div>
+        </div>
+        <div className=" flex justify-center items-center">
+          <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
+            <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
+              Delivery
+            </h1>
+          </div>
+        </div>
+        <div className="flex justify-center items-center lg:w-[761px] bg-white w-[300px] rounded-[10px] py-4 lg:h-[284px]">
+          <div className="flex flex-col gap-4 items-center">
+            <div className="flex flex-col items-center w-full">
+              <label className="text-[0.9rem] text-[#a7a7a7] text-center">
+                Do you want to handle delivery?
+              </label>
+              <div className="flex items-center gap-8 mt-2">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="handleDelivery"
+                    value="yes"
+                    required
+                    checked={handleDelivery === "yes"}
+                    onChange={() => setHandleDelivery("yes")}
+                    className="form-radio text-primaryOne"
+                  />
+                  <span className="ml-2">Yes</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="handleDelivery"
+                    value="no"
+                    required
+                    checked={handleDelivery === "no"}
+                    onChange={() => setHandleDelivery("no")}
+                    className="form-radio text-primaryOne"
+                  />
+                  <span className="ml-2">No</span>
+                </label>
+              </div>
             </div>
-            <div className="  flex flex-col items-center gap-2 lg:w-[486px] w-[200px]  ">
-              <input
-                type="number"
-                id="price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                placeholder="Add Product Price"
-                className="bg-primaryTwo  lg:h-[49px] lg:w-full flex justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
-              />
-              <input
-                value={discount}
-                onChange={(e) => setDiscount(e.target.value)}
-                type="number"
-                id="price"
-                placeholder="Add Discount"
-                className="bg-primaryTwo  lg:h-[49px] flex lg:w-full justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
-              />
-            </div>
+
+            {/* Conditional Dropdown */}
+            {handleDelivery === "no" && (
+              <div className="w-full px-4 flex flex-col items-center">
+                <label className="text-[0.9rem] text-[#a7a7a7]">
+                  Choose Delivery Service
+                </label>
+                <select
+                  required
+                  className="bg-primaryTwo lg:w-[223px] lg:h-[53px] w-full rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
+                >
+                  <option value="swift_logistics">Swift Logistics</option>
+                </select>
+              </div>
+            )}
+
             <button
               disabled={creatingProduct}
-              className="flex m-auto bg-primaryOne px-[3rem] py-[0.7rem] rounded-[5px] text-white"
+              className="flex m-auto bg-primaryOne lg:w-[154px] w-[200px] justify-center items-center lg:h-[38px] rounded-[5px] text-white"
             >
               {creatingProduct ? <Spinner /> : "Save"}
             </button>
           </div>
-        </form>
-      </div>
-
-      <div className=" flex justify-center items-center">
-        <div className="lg:w-[761px] h-[60px] w-[300px] rounded-[10px] flex justify-start items-center pl-4 bg-gradient-to-r from-[rgba(233,230,206,1)] to-[rgba(151,173,177,1)]">
-          <h1 className="font-[600] text-[1.5rem] sm:text-[1.2rem]">
-            Delivery
-          </h1>
         </div>
-      </div>
-      <div className="flex justify-center items-center lg:w-[761px] bg-white  w-[300px]  rounded-[10px] py-4 lg:h-[484px]">
-        <form action="" className=" flex flex-col gap-4 items-center ">
-          <div className="">
-            <input
-              type="text"
-              placeholder="Name This Delivery"
-              className="bg-primaryTwo lg:w-[723px] lg:h-[53px] w-[280px] rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-            />
-          </div>
-          <div className="">
-            <input
-              type="text"
-              placeholder="Region"
-              className="bg-primaryTwo lg:w-[723px] lg:h-[53px] rounded-[5px] w-[280px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-            />
-          </div>
-          <div className="">
-            <label htmlFor="" className="text-[0.9rem] text-[#a7a7a7]">
-              Days It Takes To Deliver
-            </label>
-            <div className="flex item-center lg:gap-16 gap-4 w-full">
-              <input
-                type="text"
-                placeholder="From"
-                className="bg-primaryTwo lg:w-[330px] w-[130px] lg:h-[53px] rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-              />
-              <input
-                type="text"
-                placeholder="To"
-                className="bg-primaryTwo lg:w-[330px] w-[130px] lg:h-[53px] rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-              />
-            </div>
-          </div>
-          <div className="">
-            <input
-              type="text"
-              placeholder="Do You Charge For Delivery?"
-              className="bg-primaryTwo lg:w-[723px] lg:h-[53px] w-[280px] rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-            />
-          </div>
-          <div className="">
-            <input
-              type="text"
-              placeholder="Add Delivery Price"
-              className="bg-primaryTwo lg:w-[723px] lg:h-[53px] w-[280px] rounded-[5px] pl-4 focus:outline-none lg:placeholder:text-[1rem] placeholder:text-[0.8rem]"
-            />
-          </div>
-          <button className="flex m-auto bg-primaryOne lg:w-[304px] w-[200px] justify-center items-center lg:h-[48px] rounded-[5px]  text-white">
-            Submit
-          </button>
-        </form>
-      </div>
+      </form>
     </div>
   );
 }

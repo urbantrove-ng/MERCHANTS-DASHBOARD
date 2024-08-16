@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuthContext";
 import PersistLogin from "./PersistLogin";
 import ProtectedRoutes from "./context/ProtectedRoutes";
 import SignupPage from "./Auth/SignupPage";
+import Verify from "./Auth/Verify";
 function App() {
   return (
     <AuthProvider>
@@ -41,6 +42,7 @@ function App() {
             <Route path="Login" element={<Login />} />
             <Route path="Signup" element={<SignupPage />} />
           </Route>
+          <Route path="/verify/:id" element={<Verify />} />
         </Routes>
       </PersistLogin>
     </AuthProvider>

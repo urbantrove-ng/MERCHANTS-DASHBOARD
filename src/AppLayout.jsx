@@ -13,7 +13,7 @@ function AppLayout() {
       <div className=" flex flex-col w-[100vw]">
         <Header />
         <div className=" flex w-full ">
-          <div className=" w-full bg-[#FBF7F4]">
+          <div className=" w-full bg-[#FBF7F4] h-full">
             <Outlet />
           </div>
           <RightSideBar />
