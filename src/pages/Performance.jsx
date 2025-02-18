@@ -62,7 +62,7 @@ export default function Performance() {
     },
   };
   return (
-    <div className="relative grid gap-[2rem] lg:w-[812px] w-[330px]  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6  font-inter">
+    <div className="relative grid gap-[2rem] lg:w-[812px] w-[330px] h-[120vh]  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6  font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
         <DisplaySideBar />
       </div>
@@ -73,7 +73,7 @@ export default function Performance() {
           </h1>
         </div>
       </div>
-      <div className="lg:w-[761px] w-[300px] lg:h-[20rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
+      <div className="lg:w-[761px] w-[300px] h-[200px] lg:h-[20rem] bg-white px-[2rem] py-[1rem] rounded-[10px]">
         <Line data={chartData} options={option} />
       </div>
       <div className=" flex justify-center items-center">
@@ -91,7 +91,9 @@ export default function Performance() {
                 key={index}
                 className="bg-primaryTwo  lg:w-[37rem] w-[300px] lg:h-[100px] h-[80px]  flex justify-center items-center  rounded-[5px]"
               >
-                <p className=" lg:w-[35rem] w-[280px] text-[12px] lg:text-[16px]">{data.text}</p>
+                <p className=" lg:w-[35rem] w-[280px] text-[12px] lg:text-[16px]">
+                  {data.text}
+                </p>
               </div>
             );
           })}

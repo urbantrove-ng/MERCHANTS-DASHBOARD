@@ -20,14 +20,14 @@ function SignupPage() {
       const response = await axios.post(
         LOGIN_URL,
 
-        JSON.stringify({ email, password, role: "merchant" }),
+        JSON.stringify({ email, password, role: "seller" }),
 
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-
+      console.log(response);
       if (response.data.code === 200) {
         setIsSignedUp(true);
       }
@@ -100,7 +100,15 @@ function SignupPage() {
                   {showPassword ? "Hide" : "Show"}
                 </button>
               </div>
-
+              <div className="flex justify-center items-center gap-4">
+                <input id="terms" type="checkbox" required />
+                <h4 className=" flex gap-2 " htmlFor="terms">
+                  <p>I Agree to the </p>
+                  <Link to="/Terms&Conditions" className=" text-primaryOne">
+                    Terms and Conditions
+                  </Link>
+                </h4>
+              </div>
               <div className="flex gap-6 items-center mt-6">
                 <button className=" bg-primaryOne lg:h-[40px] flex justify-center text-white items-center rounded-md lg:w-40 w-28 h-12 text-center  cursor-pointer drop-shadow-lg hover:scale-105 transition ease-in-out duration-200">
                   {!logining ? "Sign Up" : <Spinner />}

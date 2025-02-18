@@ -7,7 +7,7 @@ import PremiumService from "./pages/PremiumService";
 import Wallet from "./pages/Wallet";
 import Faq from "./pages/Faq";
 import Services from "./pages/Services";
-
+import Reset from "./Auth/Reset"
 import Dash from "./pages/Dashboard";
 import AppLayout from "./AppLayout";
 import Product from "./pages/Product";
@@ -18,6 +18,8 @@ import PersistLogin from "./PersistLogin";
 import ProtectedRoutes from "./context/ProtectedRoutes";
 import SignupPage from "./Auth/SignupPage";
 import Verify from "./Auth/Verify";
+import ForgotPassword from "./Auth/ForgotPassword";
+import Terms from "./components/Terms";
 function App() {
   return (
     <AuthProvider>
@@ -41,8 +43,13 @@ function App() {
           <Route path="/Auth" element={<Auth />}>
             <Route path="Login" element={<Login />} />
             <Route path="Signup" element={<SignupPage />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
+            <Route path="resetpassword/:token" element={<Reset />} />
           </Route>
           <Route path="/verify/:id" element={<Verify />} />
+        </Routes>
+        <Routes>
+          <Route path="/Terms&Conditions" element={<Terms />} />
         </Routes>
       </PersistLogin>
     </AuthProvider>

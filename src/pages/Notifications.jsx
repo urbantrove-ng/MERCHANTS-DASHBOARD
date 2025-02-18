@@ -27,110 +27,117 @@ export default function Notifications() {
         </div>
       </div>
       <div className="flex flex-col items-center gap-4">
-        <div className="bg-white">
-          <div className="mx-auto lg:w-[700px] w-[300px] px-4  sm:px-6 lg:px-8 ">
-            <div className="">
-              <div className="space-y-20">
-                <div>
-                  <h3 className="sr-only">
-                    Order placed on
-                    {/* <time dateTime={order.datetime}>{order.date}</time> */}
-                  </h3>
-                  <table className="mt-4 w-full text-gray-500 sm:mt-6">
-                    <caption className="sr-only">Products</caption>
-                    <thead className="sr-only text-left text-sm text-gray-500 sm:not-sr-only">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="py-3 pr-8 font-normal sm:w-2/5 lg:w-1/3"
-                        >
-                          Product
-                        </th>
-                        <th
-                          scope="col"
-                          className="hidden w-1/5 py-3 pr-8 font-normal sm:table-cell"
-                        >
-                          Price
-                        </th>
-                        <th
-                          scope="col"
-                          className="hidden py-3 pr-8 font-normal sm:table-cell"
-                        >
-                          Quantity
-                        </th>
-                        <th
-                          scope="col"
-                          className="hidden py-3 pr-8 font-normal sm:table-cell"
-                        >
-                          Status
-                        </th>
-                        <th
-                          scope="col"
-                          className="w-0 py-3 text-right font-normal"
-                        >
-                          Info
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200 border-b border-gray-200 text-sm sm:border-t">
-                      {orders?.map((order) =>
-                        order.items.map((item) => (
-                          <tr key={item.product._id}>
-                            <td className="py-6 pr-8">
-                              <div className="flex items-center">
-                                <img
-                                  alt={item.product.productName}
-                                  src={item.product.images[0]?.url}
-                                  className="mr-6 h-16 w-16 rounded object-cover object-center"
-                                />
-                                <div>
-                                  <div className="font-medium text-gray-900">
-                                    {item.product.productName}
-                                  </div>
-                                  <div className="mt-1 sm:hidden">
-                                    {item.total}
+        {orders.length > 0 && (
+          <div className="bg-white">
+            <div className="mx-auto lg:w-[700px] w-[300px] px-4  sm:px-6 lg:px-8 ">
+              <div className="">
+                <div className="space-y-20">
+                  <div>
+                    <h3 className="sr-only">
+                      Order placed on
+                      {/* <time dateTime={order.datetime}>{order.date}</time> */}
+                    </h3>
+                    <table className="mt-4 w-full text-gray-500 sm:mt-6">
+                      <caption className="sr-only">Products</caption>
+                      <thead className="sr-only text-left text-sm text-gray-500 sm:not-sr-only">
+                        <tr>
+                          <th
+                            scope="col"
+                            className="py-3 pr-8 font-normal sm:w-2/5 lg:w-1/3"
+                          >
+                            Product
+                          </th>
+                          <th
+                            scope="col"
+                            className="hidden w-1/5 py-3 pr-8 font-normal sm:table-cell"
+                          >
+                            Price
+                          </th>
+                          <th
+                            scope="col"
+                            className="hidden py-3 pr-8 font-normal sm:table-cell"
+                          >
+                            Quantity
+                          </th>
+                          <th
+                            scope="col"
+                            className="hidden py-3 pr-8 font-normal sm:table-cell"
+                          >
+                            Status
+                          </th>
+                          <th
+                            scope="col"
+                            className="w-0 py-3 text-right font-normal"
+                          >
+                            Info
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 border-b border-gray-200 text-sm sm:border-t">
+                        {orders?.map((order) =>
+                          order.items.map((item) => (
+                            <tr key={item.product._id}>
+                              <td className="py-6 pr-8">
+                                <div className="flex items-center">
+                                  <img
+                                    alt={item.product.productName}
+                                    src={item.product.images[0]?.url}
+                                    className="mr-6 h-16 w-16 rounded object-cover object-center"
+                                  />
+                                  <div>
+                                    <div className="font-medium text-gray-900">
+                                      {item.product.productName}
+                                    </div>
+                                    <div className="mt-1 sm:hidden">
+                                      {item.total}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="hidden py-6 pr-8 sm:table-cell">
-                              ₦{Number(item.total).toLocaleString()}
-                            </td>
-                            <td className="hidden py-6 pr-8 sm:table-cell">
-                              {item.quantity}
-                            </td>
-                            <td className=" ">
-                              <p
-                                className={
-                                  order.status === "completed"
-                                    ? "hidden  rounded-2xl sm:table-cell mr-14 text-green-400 bg-green-200 h-6 lg:flex justify-center items-center "
-                                    : "hidden  rounded-2xl  sm:table-cell mr-14 text-red-500 bg-red-200 h-6 lg:flex justify-center items-center "
-                                }
-                              >
-                                {order.status}
-                              </p>
-                            </td>
-                            <td className="whitespace-nowrap py-6 text-right font-medium">
-                              <a
-                                href={item.product.href}
-                                className="text-indigo-600"
-                              >
-                                View
-                                <span className="sr-only">
-                                  , {item.product.productName}
-                                </span>
-                              </a>
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+                              </td>
+                              <td className="hidden py-6 pr-8 sm:table-cell">
+                                ₦{Number(item.total).toLocaleString()}
+                              </td>
+                              <td className="hidden py-6 pr-8 sm:table-cell">
+                                {item.quantity}
+                              </td>
+                              <td className=" ">
+                                <p
+                                  className={
+                                    order.status === "completed"
+                                      ? "hidden  rounded-2xl sm:table-cell mr-14 text-green-400 bg-green-200 h-6 lg:flex justify-center items-center "
+                                      : "hidden  rounded-2xl  sm:table-cell mr-14 text-red-500 bg-red-200 h-6 lg:flex justify-center items-center "
+                                  }
+                                >
+                                  {order.status}
+                                </p>
+                              </td>
+                              <td className="whitespace-nowrap py-6 text-right font-medium">
+                                <a
+                                  href={item.product.href}
+                                  className="text-indigo-600"
+                                >
+                                  View
+                                  <span className="sr-only">
+                                    , {item.product.productName}
+                                  </span>
+                                </a>
+                              </td>
+                            </tr>
+                          ))
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
+        {orders.length === 0 && (
+          <div className=" flex justify-center items-center">
+            <p>No New Notification</p>
+          </div>
+        )}{" "}
       </div>
     </div>
   );

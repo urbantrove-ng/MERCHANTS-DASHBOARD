@@ -136,7 +136,7 @@ function Login() {
               <div className="w-full flex justify-end">
                 <p
                   className="underline cursor-pointer"
-                  onClick={() => navigate("/forgotpassword")}
+                  onClick={() => navigate("/auth/forgotpassword")}
                 >
                   Forgot password?
                 </p>

@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import bg from "../assets/UT-removebg-preview 1.png";
 function Auth() {
   return (
@@ -13,7 +13,7 @@ function Auth() {
             <li>Contact Us</li>
             <li>English</li>
             <li>Help</li>
-            <li>Signup</li>
+            <Link to="/Auth/Login">SignIn</Link>
           </ul>
         </nav>
         <div className=" flex justify-center items-center">

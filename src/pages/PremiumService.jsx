@@ -1,12 +1,49 @@
 import { useState } from "react";
 
 import DisplaySideBar from "../features/RightSideBar/DisplaySideBar";
-
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 export default function PremiumService() {
   const [selectedContent, setSelectedContent] = useState("Basic");
+  const [checkingout, setCheckingout] = useState(false);
 
   const handleContentClick = (content) => {
     setSelectedContent(content);
+  };
+  const axiosPrivate = useAxiosPrivate();
+  const onhandleCheckOut = async () => {
+    setCheckingout(true);
+    const res = await axiosPrivate.post(
+      "/planpayment",
+      JSON.stringify({
+        amount: selectedContent === "basic" ? 2500 : 5000,
+        billingPlan: selectedContent.toLowerCase(),
+      }),
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
+    const planId = res?.data?.plan?._id;
+    if (res.status === 201) {
+      setCheckingout(false);
+      const response = await axiosPrivate.post(
+        "/planpayment",
+        JSON.stringify({ id: planId }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      if (response.status === 201) {
+        const authorizationUrl =
+          response?.data?.data?.response?.data?.authorization_url;
+        window.location.href = authorizationUrl; 
+      }
+    }
+  };
+  const onhandlesubmit = (e) => {
+    e.preventDefault();
+    onhandleCheckOut();
   };
   return (
     <div className="relative grid gap-[2rem] lg:w-[812px]   scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6  font-inter">
@@ -47,7 +84,7 @@ export default function PremiumService() {
                 Basic
               </p>
               <p className="text-primaryOne text-[16px] lg:text-[1.5rem]">
-                ₦12500
+                ₦2500
               </p>
               <ul className="text-[12px] lg:text-[0.8rem] flex flex-col items-start">
                 <li className="flex items-center gap-[0.5rem] sm:gap-[0.4rem]">
@@ -89,7 +126,7 @@ export default function PremiumService() {
                 Premium
               </p>
               <h1 className="text-primaryOne text-[16px] lg:text-[1.5rem]">
-                ₦15000
+                ₦5000
               </h1>
               <ul className="text-[12px] lg:text-[0.8rem] flex flex-col items-start">
                 <li className="flex items-center sm:items-left gap-[0.5rem] sm:gap-[0.4rem]">
@@ -126,11 +163,11 @@ export default function PremiumService() {
                     Total
                   </h1>
                   <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
-                    ₦12500
+                    ₦2500
                   </h1>
                 </div>
                 <h1 className="py-[0.6rem] text-[1.2rem] sm:text-[1rem] font-[300]">
-                  Renews for ₦12500 every month
+                  Renews for ₦2500 every month
                 </h1>
               </div>
             </>
@@ -155,11 +192,11 @@ export default function PremiumService() {
                     Total
                   </h1>
                   <h1 className="font-[700] text-[1.6rem] sm:text-[1.3rem]">
-                    ₦15000
+                    ₦5000
                   </h1>
                 </div>
                 <h1 className="py-[0.6rem] text-[1.2rem] sm:text-[1rem] font-[300]">
-                  Renews for ₦15000 every month
+                  Renews for ₦5000 every month
                 </h1>
               </div>
             </>
@@ -179,6 +216,7 @@ export default function PremiumService() {
         <form
           action=""
           className=" w-[300px]  flex items-center flex-col gap-2"
+          onSubmit={onhandlesubmit}
         >
           <label
             htmlFor=""
@@ -188,13 +226,17 @@ export default function PremiumService() {
           </label>
           <input
             type="number"
-            className="border-primaryOne border-[2px] w-[60vw] lg:w-[30rem]  lg:h-[1.5rem]  focus:outline-none rounded-[10rem]"
+            value={selectedContent === "basic" ? 2500 : 5000}
+            className="border-primaryOne border-[2px] w-[60vw] lg:w-[20rem] pl-4  lg:h-[2rem]  focus:outline-none rounded-[10rem]"
           />
           <p className=" text-center">
             The higher the price the higher the advantage you have
           </p>
-          <button className="flex m-auto mt-[1.5rem] sm:mt-[1rem] bg-primaryOne px-[5rem] py-[0.5rem] rounded-[5px] text-white text-[1.1rem]">
-            Proceed
+          <button
+            type="submit"
+            className="flex m-auto mt-[1.5rem] sm:mt-[1rem] bg-primaryOne px-[5rem] py-[0.5rem] rounded-[5px] text-white text-[1.1rem]"
+          >
+            {checkingout ? "proceding" : "proceed"}
           </button>
         </form>
       </div>

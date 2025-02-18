@@ -200,8 +200,6 @@ export default function Product() {
   const [discount, setDiscount] = useState("");
   const axiosPrivate = useAxiosPrivate();
   const [handleDelivery, setHandleDelivery] = useState("yes");
-  const [selectedDeliveryService, setSelectedDeliveryService] = useState("");
-  console.log(selectedDeliveryService);
   const [viewAll, setViewAll] = useState(false);
   const [newdata, setData] = useState([]);
   const [creatingProduct, setIsCreatingProduct] = useState(false);
@@ -243,9 +241,15 @@ export default function Product() {
 
       const uploadResponses = await Promise.all(uploadPromises);
 
-      const imageUrls = uploadResponses
-        .filter((response) => response && response.status === 200)
-        .map((response) => response.data.url);
+     const imageUrls = uploadResponses
+       .filter((response) => response && response.status === 200)
+       .map((response) => {
+         let url = response.data.secure_url || response.data.url;
+         if (url.startsWith("http://")) {
+           url = url.replace("http://", "https://");
+         }
+         return url;
+       });
 
       const PRODUCT_UPLOADURL = "/product";
       const response = await axiosPrivate.post(
@@ -272,7 +276,7 @@ export default function Product() {
           withCredentials: true,
         }
       );
-      console.log(selectedDeliveryService);
+      console.log(response);
       if (response.status === 200) {
         setIsCreatingProduct(false);
         setFiles([null, null, null, null]);
@@ -283,6 +287,7 @@ export default function Product() {
         setDescription("");
         setPrice("");
         setDiscount("");
+        getAllProducts();
       }
     } catch (error) {
       setIsCreatingProduct(false);
@@ -317,7 +322,6 @@ export default function Product() {
     const shortHashName = `${name.slice(0, 20)}...`;
     return shortHashName;
   };
-  console.log(handleDelivery);
   return (
     <div className="relative grid gap-[2rem] h-auto lg:w-[812px] w-full  scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:scrollbar scrollbar-thumb-primaryOne scrollbar-track-primaryTwo  overflow-y-scroll max-h-[75vh] lg:h-[90vh] justify-center lg:py-6 py-6  font-inter">
       <div className="fixed top-[10.6rem] sm:top-[9.3rem] right-0 z-10">
@@ -496,15 +500,14 @@ export default function Product() {
         <div className=" flex justify-center items-center">
           <div className="flex justify-around gap-[0.5rem] lg:gap-[0.5rem] lg:w-[761px] w-[300px]  bg-white lg:px-[2rem] px-[0.5rem] py-[1rem] rounded-[10px]">
             <div className=" flex flex-col items-center gap-2">
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-2 lg:gap-4 gap-2 mb-4">
                 {files.map((file, index) => (
                   <div
                     key={index}
-                    className="bg-primaryTwo lg:w-[40px] lg:h-[40px] h-[30px] w-[30px] flex flex-col justify-center items-center rounded-[10px] relative"
+                    className="bg-primaryTwo lg:w-[40px] lg:h-[40px] h-[35px] w-[35px] flex flex-col justify-center items-center rounded-[10px] relative"
                   >
                     <input
                       type="file"
-                      required
                       id={`file-upload-${index}`}
                       className="absolute inset-0 opacity-0 cursor-pointer"
                       accept="image/*"
@@ -537,7 +540,7 @@ export default function Product() {
                   required
                   onChange={(e) => setProductName(e.target.value)}
                   placeholder="Add Product Name"
-                  className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] flex justify-center items-start pl-4 rounded-[5px] focus:outline-none sm:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                  className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] flex justify-center h-[30px] items-start pl-4 rounded-[5px] focus:outline-none sm:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
                 />
               </div>
               <div className="flex flex-col space-y-4">
@@ -546,7 +549,7 @@ export default function Product() {
                   value={selectedCategory}
                   required
                   onChange={handleCategoryChange}
-                  className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
+                  className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] h-[30px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
                 >
                   <option value="" disabled hidden>
                     Select Product Category
@@ -568,7 +571,7 @@ export default function Product() {
                     required
                     value={selectedSubCategory}
                     onChange={handleSubCategoryChange}
-                    className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
+                    className="bg-primaryTwo lg:w-[486px] lg:h-[49px] w-[200px] h-[30px]  flex justify-center items-center pl-4 pr-8 rounded-[5px] focus:outline-none text-[0.8rem] lg:text-[0.8rem] appearance-none"
                   >
                     <option value="" disabled selected hidden>
                       Select Subcategory
@@ -602,16 +605,15 @@ export default function Product() {
                   required
                   onChange={(e) => setPrice(e.target.value)}
                   placeholder="Add Product Price"
-                  className="bg-primaryTwo  lg:h-[49px] lg:w-full flex justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                  className="bg-primaryTwo  lg:h-[49px] lg:w-full h-[30px] flex justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
                 />
                 <input
                   value={discount}
                   onChange={(e) => setDiscount(e.target.value)}
                   type="number"
                   id="price"
-                  required
                   placeholder="Add Discount"
-                  className="bg-primaryTwo  lg:h-[49px] flex lg:w-full justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
+                  className="bg-primaryTwo  lg:h-[49px] flex lg:w-full h-[30px] justify-center w-[200px]  items-start pl-4 rounded-[5px] focus:outline-none lg:placeholder:text-[0.8rem] placeholder:text-[0.8rem]"
                 />
               </div>
             </div>
@@ -675,7 +677,7 @@ export default function Product() {
 
             <button
               disabled={creatingProduct}
-              className="flex m-auto bg-primaryOne lg:w-[154px] w-[200px] justify-center items-center lg:h-[38px] rounded-[5px] text-white"
+              className="flex m-auto bg-primaryOne lg:w-[154px] w-[100px] justify-center items-center lg:h-[38px] h-[30px] rounded-[5px] text-white"
             >
               {creatingProduct ? <Spinner /> : "Save"}
             </button>
